@@ -1,0 +1,74 @@
+No SQL Database -> MongoDB -> JSON
+
+SQL -> RDBMS -> Relational (MySQL, SQL server, Oracle)
+
+
+SQL Databases
+1. Databases
+2. Table
+3. Rows
+4. Columns
+5. Join Table
+6. Primary Key and Foreign Key
+
+NoSQL Databases
+1. Databases
+2. Collections
+3. Documents
+4. Fields
+5. Embedded Documents
+6. Primary Key -> automatically generated!
+
+
+create new mongdb dataabase
+>>use friend
+will create friend dataabase
+>>db
+will tell the name of active database
+>> db.createCollection("personal")
+will create new collection named > personal
+> show collections
+will list all the collections in active db
+> db.hobby.insert({"name":"swimming", "level":"amateur", "pursuingsince":4})
+will create new collection named > hobby and insert a new document in hobby collection,
+both a same time!
+> db.hobby.insert({"name":"cooking", "level":"amateur", "pursuingsince":20})
+> db.hobby.insert({"name":"programming", "level":"expert", "pursuingsince":13})
+> db.hobby.insert({"name":"driving", "level":"expert", "pursuingsince":8})
+> db.hobby.insert({"name":"hacking", "level":"novice", "pursuingsince":10})
+will insert 4 documents more
+> db.hobby.find()
+will list all documents in hobby collection
+> db.hobby.find().pretty()
+will prettify the output of above command
+> db.hobby.find().pretty().limit(2)
+will limit the count of documents in output by 2
+> db.hobby.find().sort({name:-1})
+will sort document in descending order for name field
+> db.hobby.find().sort({name:1})
+will sort document in ascecnding order for name field
+> db.hobby.find().sort({pursuingsince:1})
+will sort document in ascecnding order for pursuingsince field
+> db.hobby.count()
+will return the count of documents in the hobby collection!
+> db.hobby.find({name:"cooking"})
+will return document/s with name field to be equal to cooking
+> db.hobby.find({level:"expert"})
+will return document/s with level field to be equal to expert
+> db.hobby.find({}, {name:1})
+will return only name field with primary key 
+> db.hobby.find({}, {level:1, pursuingsince:1, _id:0})
+will return only level and pursuingsince filed without primarykey
+
+
+
+
+
+
+
+
+
+
+
+
+
