@@ -46,9 +46,9 @@ will limit the count of documents in output by 2
 > db.hobby.find().sort({name:-1})
 will sort document in descending order for name field
 > db.hobby.find().sort({name:1})
-will sort document in ascecnding order for name field
+will sort document in ascending order for name field
 > db.hobby.find().sort({pursuingsince:1})
-will sort document in ascecnding order for pursuingsince field
+will sort document in ascending order for pursuingsince field
 > db.hobby.count()
 will return the count of documents in the hobby collection!
 > db.hobby.find({name:"cooking"})
@@ -58,6 +58,52 @@ will return document/s with level field to be equal to expert
 > db.hobby.find({}, {name:1})
 will return only name field with primary key 
 > db.hobby.find({}, {level:1, pursuingsince:1, _id:0})
+db.hobby.update({'_id':'5ee701c8d32e072d76f9b804'}, {$set:{"level":"amateur"}})
+db.hobby.update({"name" : "hacking"}, {$set:{"level":"amateur"}})
+db.hobby.find().pretty()
+db.hobby.update({"name" : "hacking"}, {$set:{"level":"zero"}}, {multi:true})
+db.hobby.find().pretty()
+db.hobby.update({'_id':'5ee701c8d32e072d76f9b804'}, {$set:{"level":"amateur"}})
+db.hobby.find().pretty()
+db.hobby.update({'_id':ObjectId('5ee701c8d32e072d76f9b804')}, {$set:{"level":"amateur"}})
+db.hobby.find().pretty()
+db.hobby.find()
+db.hobby.remove({ "_id" : ObjectId("5ee70777d32e072d76f9b808")})
+db.hobby.find()
+show collections
+db.personal.find()
+db.personal.drop()
+show collections
+use location
+db.createCollection("city")
+show collections
+db
+db.dropDatabase()
+show dbs
+db
+use friendlyEqual(
+use friend
+db.friend.find()
+db.hobby.find()
+db.hobby.find().pretty()
+db.hobby.find({pursuingsince:{$gt:8}})
+db.hobby.find({pursuingsince:{$gte:8}})
+db.hobby.find({pursuingsince:{$lte:8}})
+db.hobby.find({pursuingsince:{$lt:8}})
+db.hobby.find().pretty()
+db.hobby.find({pursuingsince:{$gte:8, $lt:13}})
+db.hobby.find().pretty()
+db.hobby.find({$and:[{pursuingsince:{$gte:10}}, {level:'amateur'}]})
+db.hobby.find({$and:[{pursuingsince:{$gte:10}}, {level:'amateur'}]}).pretty()
+db.hobby.find({$and:[{pursuingsince:{$gt:10}}, {level:'amateur'}]}).pretty()
+db.hobby.find({$or:[{pursuingsince:{$gt:10}}, {level:'amateur'}]}).pretty()
+db.hobby.update({}, {$set:{experience:10}},{upsert:false, multi:true})
+db.hobby.find().pretty()
+db.hobby.find({$where: function(){}}).pretty()
+db.hobby.find({$where: function(){return (this.pursuingsince == this.experience)}}).pretty()
+db.hobby.find({$where: function(){return (this.pursuingsince != this.experience)}}).pretty()
+db.hobby.find({$where: function(){return (this.pursuingsince >= this.experience)}}).pretty()
+db.hobby.find({$where: function(){return (this.pursuingsince < this.experience)}}).pretty()
 will return only level and pursuingsince filed without primarykey
 
 
