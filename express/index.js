@@ -80,6 +80,18 @@ app.put('/update/:id', (req, res)=>{
   })
 })
 
+
+app.delete('/delete/:id', (req, res)=>{
+  var id = req.params.id
+  fm.findByIdAndDelete({_id:id}, (err, data)=>{
+    if(err)
+      throw err
+ 
+    res.json(data)
+
+  })
+})
+
 app.post('/', function(req, res){
   console.log(req)  
   console.log(req.body)
