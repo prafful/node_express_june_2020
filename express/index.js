@@ -68,6 +68,18 @@ app.post('/add', (req, res)=>{
 
 })
 
+app.put('/update/:id', (req, res)=>{
+  var id = req.params.id
+  console.log(id)
+  var updatedfriend = req.body
+  console.log(updatedfriend)
+  fm.findByIdAndUpdate({_id:id}, updatedfriend, {new: true}, (err, data)=>{
+    if(err)
+      throw err
+    res.send(data)  
+  })
+})
+
 app.post('/', function(req, res){
   console.log(req)  
   console.log(req.body)
