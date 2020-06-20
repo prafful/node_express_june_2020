@@ -1,10 +1,12 @@
 var  express = require('express')
-var bodyparser  = require('body-parser')
+var bodyparservar  = require('body-parser')
 var mongoose = require('mongoose')
+var corsvar = require('cors')
 var fm = require('./model/friend')
 
 var app = express()
-app.use(bodyparser.json())
+app.use(corsvar())
+app.use(bodyparservar.json())
 
 //use mongoose to conenct to database
 mongoose.connect("mongodb://localhost:27017/friend")
