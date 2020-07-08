@@ -2,8 +2,12 @@ var mongoose = require('mongoose')
 
 var mongooseSchema = mongoose.Schema
 
-var freindSchema = new mongooseSchema({
-                                        "name":String,
+var friendSchema = new mongooseSchema({
+                                        "name":{
+                                           type: String,
+                                           required:[true, 'name is mandatory'],
+                                           match: [/^[a-zA-Z]+$/,' is invalid']
+                                          },
                                         "level":String,
                                         "pursuingsince":Number,
                                         "experience":Number                   
@@ -12,4 +16,4 @@ var freindSchema = new mongooseSchema({
                                          collection:'hobby'
                                       })
 
-module.exports = mongoose.model('hobby', freindSchema)   
+module.exports = mongoose.model('hobby', friendSchema)   

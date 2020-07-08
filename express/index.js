@@ -64,7 +64,7 @@ app.post('/add', (req, res)=>{
   console.log(newfriend)
   newfriend.save((err)=>{
     if(err)
-      throw err
+      res.send(err)
     res.json({message:'success'})  
   })
 
